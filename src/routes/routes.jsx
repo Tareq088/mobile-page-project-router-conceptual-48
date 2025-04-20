@@ -1,24 +1,38 @@
 import { createBrowserRouter } from "react-router";
 import Home from "../Pages/Home"
 import MainLayOut from "../Layouts/MainLayOut";
+import Favorites from './../Pages/Favorites';
+import About from './../Pages/About';
+import PhoneDetails from './../Pages/PhoneDetails';
+import ErrorPage from './../Pages/ErrorPage';
 
 
 export const router = createBrowserRouter([
     {
       path: "/",
       Component: MainLayOut,
-      errorElement: <p>Error</p>,
+      errorElement: ErrorPage,
       children:[
         {
             path:"/",
-            element: <Home/>
+            element: <Home/>,
             // Component: Home
+            loader: ()=> fetch("phones.json")
         },
+        {
+          path:'/favorites',
+          Component: Favorites,
+        },
+        {
+          path:'/about',
+          Component: About
+        },
+        {
+          path:'/phone-details',
+          Component: PhoneDetails
+        }
       ]
     },
-    {
-      path: "about",
-      element: <p>this is about page</p>
-    }
+
   ])
 

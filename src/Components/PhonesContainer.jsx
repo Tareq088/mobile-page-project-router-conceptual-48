@@ -1,6 +1,7 @@
 import React from 'react';
 
-const PhonesContainer = () => {
+const PhonesContainer = ({phones}) => {
+    console.log(phones)
     return (
         <div>
             phones Container
