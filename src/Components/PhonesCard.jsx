@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const PhonesCard = ({phone}) => {
-    console.log(phone);
+    // console.log(phone);
     const {image,name, description} = phone || {}
     return (
             <div className="card bg-base-100 shadow-sm">
