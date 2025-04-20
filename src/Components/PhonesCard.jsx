@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-
-const PhonesCard = ({phone}) => {
+import { MdDeleteForever } from "react-icons/md";
+import { removeFavorite } from '../Utilities';
+const PhonesCard = ({phone, deletable, handleRemoveFavorite}) => {
     // console.log(phone);
     const {image,name, description,id} = phone || {}
     return (
@@ -25,8 +26,16 @@ const PhonesCard = ({phone}) => {
                     
                     </div>
                 </div>
+                {
+                deletable &&
+                    <div onClick={()=>handleRemoveFavorite(id)}
+                        className='absolute -top-3 -right-3 p-3 ml-5 rounded-full bg-gray-900 hover:bg-gray-300 group cursor-pointer'>
+                        <MdDeleteForever size={20} className='text-gray-300 group-hover:text-gray-900'/>
+                    </div>
+                }
+                
             </div>
-    );
+        );
 };
 
 export default PhonesCard;
