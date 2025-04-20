@@ -29,10 +29,15 @@ export const router = createBrowserRouter([
           Component: About
         },
         {
-          path:'/phone-details',
-          Component: PhoneDetails
+          path:'/phone-details/:id',
+          Component: PhoneDetails,
+          loader: () => fetch("../phones.json")
         }
       ]
+    },
+    {
+      path:'*',
+      Component: ErrorPage,
     },
 
   ])
